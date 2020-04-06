@@ -1,4 +1,7 @@
-Errors:       No dependences
-String:       Errors
-Sequence:     Errors
-Permutations: Errors, Sequence
+Errors:        No dependences
+String:        Errors
+Sequence:      Errors
+Permutations:  Errors, Sequence
+List:          Errors
+Queue:         Errors, List
+AdjacencyList: Errors, List
