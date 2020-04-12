@@ -8,9 +8,9 @@ typedef struct _Queue {
 
 Queue make_queue();
 
-void push(Queue *queue, unsigned int const value);
+void push_to_queue(Queue *queue, valType const value);
 
-unsigned int pop(Queue *queue);
+valType pop_from_queue(Queue *queue);
 
 void delete_queue(Queue *queue);
 

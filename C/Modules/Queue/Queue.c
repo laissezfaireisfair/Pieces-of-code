@@ -6,11 +6,11 @@ Queue make_queue() {
   return queue;
 }
 
-void push(Queue *queue, unsigned int const value) {
+void push_to_queue(Queue *queue, valType const value) {
   push_front(&queue->body, value);
 }
 
-unsigned int pop(Queue *queue) {
+valType pop_from_queue(Queue *queue) {
   return pop_back(&queue->body);
 }
 
