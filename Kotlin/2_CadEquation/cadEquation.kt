@@ -27,10 +27,10 @@ fun countBiggerRoot(a: Double, b: Double, c: Double): Double? {
     return (-b + sqrt(discriminant)) / (2 * a)
 }
 
-fun main (args: Array<String>): Int {
+fun main (args: Array<String>) {
     if (args.size != 3) {
         println("Wrong number of arguments (3 coefficients required).")
-        return 1
+        return
     }
 
     val a = args[0].toDoubleOrNull()
@@ -39,12 +39,12 @@ fun main (args: Array<String>): Int {
 
     if (a == null || b == null || c == null) {
         println("Some argument is not a number.")
-        return 2
+        return
     }
 
     if (a == 0.0) {
         println("It does not a cad equation.")
-        return 3
+        return
     }
 
     when (countRoots(a, b, c)) {
@@ -56,5 +56,5 @@ fun main (args: Array<String>): Int {
             println("Roots are: $root1, $root2.")
         }
     }
-    return 0
+    return
 }
