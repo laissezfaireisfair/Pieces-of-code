@@ -7,6 +7,7 @@ void add_vals (int **matrix, unsigned int const size, FILE *fin){
         fscanf(fin, "%d", &matrix[i][j]);
 }
 
+/// Yes, uneffective
 int is_simmetric (int **matrix, unsigned int const size){
     for (unsigned int i = 0; i < size; ++i)
         for (unsigned int j = 0; j < size; ++j)
