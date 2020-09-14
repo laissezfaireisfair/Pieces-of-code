@@ -2,6 +2,7 @@
 *.out
 *.exe
 *.sln
+*.iml
 
 **/.idea/
 **/build/
