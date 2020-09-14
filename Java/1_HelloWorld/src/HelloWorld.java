@@ -1,5 +1,6 @@
 public class HelloWorld {
   public static void main(String[] args) {
-    System.out.println("Hello, world!");
+    final Message helloWorldMessage = new Message("Hello, World!");
+    System.out.println(helloWorldMessage.get_text());
   }
 }
