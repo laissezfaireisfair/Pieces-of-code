@@ -1,19 +1,19 @@
 public class Date {
-	private final int m_year;
-	private final int m_mounth;
-	private final int m_day;
 	Date(int year, int month, int day) {
 		m_year = year;
-		m_mounth = mounth;
+		m_month = month;
 		m_day = day;
 	}
-	public year() {
+	public int year() {
 		return m_year;
 	}
-	public month() {
-		return m_mounth;
+	public int month() {
+		return m_month;
 	}
-	public day() {
+	public int day() {
 		return m_day;
 	}
+	private final int m_year;
+	private final int m_month;
+	private final int m_day;
 }
