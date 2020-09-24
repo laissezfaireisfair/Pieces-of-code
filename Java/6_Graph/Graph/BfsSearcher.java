@@ -16,7 +16,7 @@ class BfsSearcher {
         mStart = start;
         mFinish = finish;
         for (int i = 0; i < mSize; ++i)
-            mParent.set(i, -1);
+            mParent.add(-1);
         search(graph);
     }
 
@@ -45,7 +45,7 @@ class BfsSearcher {
 
     private void search(final Graph graph) {
         ArrayList<Integer> distance = new ArrayList<>(mSize);
-        for (int  i = 0; i < mSize; ++i) distance.set(i, -1);
+        for (int  i = 0; i < mSize; ++i) distance.add(-1);
         distance.set(mStart, 0);
 
         LinkedList<Integer> queue = new LinkedList<>();

@@ -22,6 +22,9 @@ public class GraphImpl implements Graph {
 
 	public GraphImpl(final int size) {
 		mBody = new ArrayList<>(size);
+		for (int i = 0; i < size; ++i) {
+			mBody.add(new LinkedList<>());
+		}
 	}
 
 	public int getSize() {
