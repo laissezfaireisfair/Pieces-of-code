@@ -1,8 +1,9 @@
 package Graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-class WayImpl implements Way {
+public class WayImpl implements Way {
     private final ArrayList<Integer> mBody;
 
     WayImpl(final List<Integer> vertexes) {

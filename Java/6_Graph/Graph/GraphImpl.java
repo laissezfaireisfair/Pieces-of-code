@@ -1,13 +1,15 @@
 package Graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class GraphImpl {
+public class GraphImpl implements Graph {
 	private ArrayList<LinkedList<Integer>> mBody;
 
-	public GraphImpl(final ArrayList<ArrayList<Integer>> matrix) {
+	public GraphImpl(final List<List<Integer>> matrix) {
 		final int size = matrix.size();
-		mBody = new ArrayList<LinkedList<Integer>>(size);
+		mBody = new ArrayList<>(size);
 		for (int i = 0; i < size; ++i) {
 			mBody.add(new LinkedList<Integer>());
 			for (int j = 0; j < size; ++j) {
@@ -18,17 +20,62 @@ public class GraphImpl {
 		}
 	}
 
-	public boolean isEdgeHere(final int begin, final int end) {
+	public GraphImpl(final int size) {
+		mBody = new ArrayList<>(size);
+	}
+
+	public int getSize() {
+		return mBody.size();
+	}
+
+	public boolean isEdgeHere(final int begin, final int end) throws IllegalArgumentException {
+		if (vertexNotExist(begin) || vertexNotExist(end)) {
+			throw new IllegalArgumentException("No such vertex");
+		}
 		return mBody.get(begin).contains(end);
 	}
 
-	boolean isWayHere(final int begin, final int end) {
+	public boolean isWayHere(final int begin, final int end) throws IllegalArgumentException {
+		if (vertexNotExist(begin) || vertexNotExist(end)) {
+			throw new IllegalArgumentException("No such vertex");
+		}
 		BfsSearcher searcher = new BfsSearcher(this, begin, end);
 		return searcher.isWayExist();
 	}
 
-	Way getShortestWay(final int begin, final int end) throws Exception {
+	public Way getShortestWay(final int begin, final int end) throws IllegalArgumentException, IllegalStateException {
+		if (vertexNotExist(begin) || vertexNotExist(end)) {
+			throw new IllegalArgumentException("No such vertex");
+		}
 		BfsSearcher searcher = new BfsSearcher(this, begin, end);
 		return searcher.getWay();
+	}
+
+	public boolean isConnected() {
+		if (mBody.size() == 0)
+			return true;
+		BfsSearcher searcher = new BfsSearcher(this, 0, getSize() - 1);
+		return searcher.isWayExist();
+	}
+
+	public List<Integer> getNeighbours(final int vertex) throws IllegalArgumentException {
+		if (vertexNotExist(vertex)) {
+			throw new IllegalArgumentException("No such vertex");
+		}
+		return mBody.get(vertex);
+	}
+
+	public void addEdge(final int begin, final int end) throws IllegalArgumentException {
+		if (vertexNotExist(begin) || vertexNotExist(end)) {
+			throw new IllegalArgumentException("No such vertex");
+		}
+	}
+
+	public boolean vertexExist(final int vertex) {
+		return vertex < mBody.size() && vertex >= 0;
+	}
+
+	public boolean vertexNotExist(final int vertex) {
+		return !vertexExist(vertex);
 	}
 }

@@ -1,6 +1,8 @@
 package Graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 class BfsSearcher {
     private boolean mIsWayExist;
@@ -22,14 +24,23 @@ class BfsSearcher {
         return mIsWayExist;
     }
 
-    public Way getWay() throws Exception {
+    public Way getWay() throws IllegalStateException {
         if (!isWayExist())
-            throw new Exception("Cannot return non-existing way");
+            throw new IllegalStateException("Cannot return non-existing way");
         LinkedList<Integer> wayList  = new LinkedList<>();
         for (int i = mFinish; i != -1; i = mParent.get(i)) {
             wayList.addFirst(i);
         }
         return new WayImpl(wayList);
+    }
+
+    public boolean isConnected() {
+        for (int i = 0; i < mSize; ++i) {
+            if (i != mStart && mParent.get(i) == -1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void search(final Graph graph) {
@@ -43,7 +54,7 @@ class BfsSearcher {
         while (!queue.isEmpty()) {
             final int vertexNow = queue.pop();
             final int distanceNow = distance.get(vertexNow);
-            List<Integer> neighbours = graph.getNeighbours();
+            List<Integer> neighbours = graph.getNeighbours(vertexNow);
             for (int neighbour : neighbours) {
                 if (distance.get(neighbour) > distanceNow + 1) {
                     distance.set(neighbour, distanceNow + 1);
