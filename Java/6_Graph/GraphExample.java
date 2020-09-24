@@ -13,16 +13,18 @@ public class GraphExample {
         System.out.print("Type number of edges: ");
         final int numEdges = scanner.nextInt();
         for (int i = 0; i < numEdges; ++i) {
-            System.out.println("Type edge as pair of vertex: ");
+            System.out.print("Type edge as pair of vertex: ");
             final int begin = scanner.nextInt();
             final int end = scanner.nextInt();
             graph.addEdge(begin, end);
         }
     }
 
-    private static void printNeighbours(final Graph graph, final int vertex) {
+    private static void printNeighbours(final Graph graph, Scanner scanner) throws IllegalArgumentException {
+        System.out.print("Type vertex which neighbours you need: ");
+        final int vertex = scanner.nextInt();
         List<Integer> neighbours = graph.getNeighbours(vertex);
-        System.out.println("Neighbours of " + vertex + " :");
+        System.out.print("Neighbours of " + vertex + " : ");
         System.out.println(Arrays.toString(neighbours.toArray()));
     }
 
@@ -34,7 +36,10 @@ public class GraphExample {
         }
     }
 
-    private static void printWay(final Graph graph, final int start, final int finish) {
+    private static void printWay(final Graph graph, Scanner scanner) throws IllegalArgumentException {
+        System.out.print("Type vertexes way between you need: ");
+        final int start = scanner.nextInt();
+        final int finish = scanner.nextInt();
         if (!graph.isWayHere(start, finish)) {
             System.out.println("There is no way between " + start + " and " + finish);
             return;
@@ -54,9 +59,9 @@ public class GraphExample {
             final int size = scanner.nextInt();
             Graph graph = new GraphImpl(size);
             fillGraph(graph, scanner);
-            printNeighbours(graph, 3);
+            printNeighbours(graph, scanner);
             printIfConnected(graph);
-            printWay(graph, 0, 1);
+            printWay(graph, scanner);
         }
         catch (InputMismatchException e) {
             System.out.print("Wrong input " + e.getMessage());
