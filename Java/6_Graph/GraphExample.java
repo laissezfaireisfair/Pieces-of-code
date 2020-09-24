@@ -1,18 +1,23 @@
 import Graph.Graph;
 import Graph.GraphImpl;
 import Graph.Way;
-import Graph.WayImpl;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import java.util.List;
 import java.util.Arrays;
 
 public class GraphExample {
     // See doc/GraphExample.png
-    private static void fillGraph(Graph graph) {
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 4);
-        graph.addEdge(4, 0);
-        graph.addEdge(0, 3);
+    private static void fillGraph(Graph graph, Scanner scanner) throws InputMismatchException, IllegalArgumentException {
+        System.out.print("Type number of edges: ");
+        final int numEdges = scanner.nextInt();
+        for (int i = 0; i < numEdges; ++i) {
+            System.out.println("Type edge as pair of vertex: ");
+            final int begin = scanner.nextInt();
+            final int end = scanner.nextInt();
+            graph.addEdge(begin, end);
+        }
     }
 
     private static void printNeighbours(final Graph graph, final int vertex) {
@@ -43,10 +48,24 @@ public class GraphExample {
     }
 
     public static void main(String[] args) {
-        Graph graph = new GraphImpl(5);
-        fillGraph(graph);
-        printNeighbours(graph, 3);
-        printIfConnected(graph);
-        printWay(graph, 0, 1);
+        System.out.print("Type size of graph: ");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            final int size = scanner.nextInt();
+            Graph graph = new GraphImpl(size);
+            fillGraph(graph, scanner);
+            printNeighbours(graph, 3);
+            printIfConnected(graph);
+            printWay(graph, 0, 1);
+        }
+        catch (InputMismatchException e) {
+            System.out.print("Wrong input " + e.getMessage());
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("Wrong argument " + e.getMessage());
+        }
+        catch (IllegalStateException e) {
+            System.out.println("Wrong input " + e.getMessage());
+        }
     }
 }
