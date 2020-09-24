@@ -11,7 +11,7 @@ public class GraphImpl implements Graph {
 		final int size = matrix.size();
 		mBody = new ArrayList<>(size);
 		for (int i = 0; i < size; ++i) {
-			mBody.add(new LinkedList<Integer>());
+			mBody.add(new LinkedList<>());
 			for (int j = 0; j < size; ++j) {
 				if (matrix.get(i).get(j) != 0) {
 					mBody.get(i).add(j);
@@ -68,6 +68,9 @@ public class GraphImpl implements Graph {
 	public void addEdge(final int begin, final int end) throws IllegalArgumentException {
 		if (vertexNotExist(begin) || vertexNotExist(end)) {
 			throw new IllegalArgumentException("No such vertex");
+		}
+		if (!mBody.get(begin).contains(end)) {
+			mBody.get(begin).add(end);
 		}
 	}
 
