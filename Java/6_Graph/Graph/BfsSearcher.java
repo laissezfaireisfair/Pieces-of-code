@@ -56,7 +56,7 @@ class BfsSearcher {
             final int distanceNow = distance.get(vertexNow);
             List<Integer> neighbours = graph.getNeighbours(vertexNow);
             for (int neighbour : neighbours) {
-                if (distance.get(neighbour) > distanceNow + 1) {
+                if (distance.get(neighbour) > distanceNow + 1 || distance.get(neighbour) == -1) {
                     distance.set(neighbour, distanceNow + 1);
                     mParent.set(neighbour, vertexNow);
                     queue.add(neighbour);

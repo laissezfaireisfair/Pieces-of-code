@@ -74,6 +74,7 @@ public class GraphImpl implements Graph {
 		}
 		if (!mBody.get(begin).contains(end)) {
 			mBody.get(begin).add(end);
+			mBody.get(end).add(begin);
 		}
 	}
 
