@@ -9,7 +9,7 @@ public class Loginer {
         ui.printStrToFile(container.getEncrypted());
     }
 
-    private static void read(final Ui ui, final int loginHash, final int passwordHash) {
+    private static void read(final Ui ui, final int loginHash, final int passwordHash) throws IOException {
         Container container = new Container(ui.readStrFromFile());
         ui.showText(container.getText(loginHash, passwordHash));
     }

@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,8 +26,8 @@ public class Ui {
         return mScanner.nextLine();
     }
 
-    public String readStrFromFile() {
-        final Scanner fileScanner = new Scanner(mPathStr);
+    public String readStrFromFile() throws IOException {
+        final Scanner fileScanner = new Scanner(new File(mPathStr));
         return fileScanner.nextLine();
     }
 
