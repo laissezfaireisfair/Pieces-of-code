@@ -1,23 +1,41 @@
 package RestrictedContainer;
 
-public class Container {
-    private static final String mText;
-    private static final String mAnswerToWrong;
-    private static final int mLoginHash;
-    private static final int mPasswordHash;
+import java.util.List;
+import java.util.ArrayList;
 
-    static {
-        mText = "Welcome to the club, buddy! *slap*";
-        mAnswerToWrong = "Wrong credentials, hacker!";
-        mLoginHash = 96327377;
-        mPasswordHash = -627014902;
+public class Container {
+    private final List<Integer> mEncryptedText;
+
+    public Container(final int loginHash, final int passwordHash, final String text) {
+        mEncryptedText = new ArrayList<Integer>(text.length());
+        for (char symbol : text.toCharArray()) {
+            final int code = (int)(symbol) ^ loginHash ^ passwordHash;
+            mEncryptedText.add(code);
+        }
     }
 
-    public static String getText(final String login, final String password) {
-        if (login.hashCode() == mLoginHash && password.hashCode() == mPasswordHash) {
-            return mText;
-        } else {
-            return mAnswerToWrong;
+    public Container(final String encryptedText) {
+        mEncryptedText = new ArrayList<Integer>(encryptedText.length());
+        for (char i : encryptedText.toCharArray()) {
+            mEncryptedText.add((int) i);
         }
+    }
+
+    public String getEncrypted() {
+        StringBuilder stringBuilder = new StringBuilder(mEncryptedText.size());
+        for (int i : mEncryptedText) {
+            final Character symbol =(char)(i);
+            stringBuilder.append(symbol);
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getText(final int loginHash, final int passwordHash) {
+        StringBuilder stringBuilder = new StringBuilder(mEncryptedText.size());
+        for (int i : mEncryptedText) {
+            final Character symbol =(char)(i ^ passwordHash ^ loginHash);
+            stringBuilder.append(symbol);
+        }
+        return stringBuilder.toString();
     }
 }
