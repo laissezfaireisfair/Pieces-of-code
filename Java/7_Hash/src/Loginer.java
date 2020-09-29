@@ -21,11 +21,11 @@ public class Loginer {
         }
         final String path = args[0];
         Ui ui = new Ui(path);
-        final Ui.FileMode mode = ui.askFileMode();
+        final FileMode mode = ui.askFileMode();
         final int loginHash = ui.askLogin().hashCode();
         final int passwordHash = ui.askPassword().hashCode();
         try {
-            if (mode == Ui.FileMode.READ) {
+            if (mode == FileMode.READ) {
                 read(ui, loginHash, passwordHash);
             } else {
                 write(ui, loginHash, passwordHash);

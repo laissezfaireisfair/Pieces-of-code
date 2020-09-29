@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Ui {
     private final Scanner mScanner;
     private final String mPathStr;
-    public enum FileMode {READ, WRITE};
 
     public Ui(final String pathStr) {
         System.out.println("Hello, user!");
