@@ -7,7 +7,7 @@ public class Container {
     private final List<Integer> mEncryptedText;
 
     public Container(final int loginHash, final int passwordHash, final String text) {
-        mEncryptedText = new ArrayList<Integer>(text.length());
+        mEncryptedText = new ArrayList<>(text.length());
         for (char symbol : text.toCharArray()) {
             final int code = (int)(symbol) ^ loginHash ^ passwordHash;
             mEncryptedText.add(code);
@@ -15,7 +15,7 @@ public class Container {
     }
 
     public Container(final String encryptedText) {
-        mEncryptedText = new ArrayList<Integer>(encryptedText.length());
+        mEncryptedText = new ArrayList<>(encryptedText.length());
         for (char i : encryptedText.toCharArray()) {
             mEncryptedText.add((int) i);
         }
