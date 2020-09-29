@@ -1,4 +1,4 @@
-import  RestrictedContainer.Container;
+package Encoder;
 
 import java.io.IOException;
 

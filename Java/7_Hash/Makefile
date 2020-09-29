@@ -1,10 +1,10 @@
 JC = javac
 CFLAGS = -source 8 -d build -g:none
-SOURCES = src/Loginer.java src/RestrictedContainer/Container.java src/Ui.java src/FileMode.java
+SOURCES = src/Encoder/Loginer.java src/Encoder/Container.java src/Encoder/Ui.java src/Encoder/FileMode.java
 
 # Inside build/
-EXPECTED_CLASSES = Loginer.class Ui.class Ui$$FileMode.class RestrictedContainer/Container.class FileMode.class
-JAR_NAME = Loginer.jar
+EXPECTED_CLASSES = Encoder/Loginer.class Encoder/Ui.class Encoder/Container.class Encoder/FileMode.class
+JAR_NAME = Encoder.jar
 
 build: $(SOURCES)
 	$(JC) $(CFLAGS) $(SOURCES)
