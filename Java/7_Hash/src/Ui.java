@@ -15,6 +15,11 @@ public class Ui {
         mPathStr = pathStr;
     }
 
+
+    public static void warnNeedFile() {
+        System.out.println("You need to type file name when calls");
+    }
+
     public String askLogin() {
         System.out.print("Type your login: ");
         return mScanner.nextLine();
@@ -51,7 +56,11 @@ public class Ui {
         return mScanner.nextLine();
     }
 
-    public void showText(final String text) {
+    public static void warnIoError(final IOException e) {
+        System.out.println("Sorry, input failed. " + e.getMessage());
+    }
+
+    public static void showText(final String text) {
         System.out.println(text);
     }
 }

@@ -11,12 +11,12 @@ public class Loginer {
 
     private static void read(final Ui ui, final int loginHash, final int passwordHash) throws IOException {
         Container container = new Container(ui.readStrFromFile());
-        ui.showText(container.getText(loginHash, passwordHash));
+        Ui.showText(container.getText(loginHash, passwordHash));
     }
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("You need to type file name when calls");
+            Ui.warnNeedFile();
             return;
         }
         final String path = args[0];
@@ -32,7 +32,7 @@ public class Loginer {
             }
         }
         catch(IOException e){
-            System.out.println("Sorry, input failed. " + e.getMessage());
+            Ui.warnIoError(e);
         }
     }
 }
