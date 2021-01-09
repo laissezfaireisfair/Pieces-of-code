@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Graph
+namespace Graphs
 {
     /// <summary>
     /// Non-weighted, directed graph implicated as adjacency list.
     /// </summary>
-    class Graph
+    public class Graph
     {
         private List<LinkedList<int>> body;
 
