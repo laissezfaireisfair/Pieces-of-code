@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Graphs
 {
@@ -84,6 +85,27 @@ namespace Graphs
         public LinkedList<int> GetNeighboursList(int begin)
         {
             return new LinkedList<int>(body[begin]);
+        }
+
+        /// <summary>
+        /// Makes adjacency list in string
+        /// </summary>
+        public override string ToString()
+        {
+            if (body == null)
+                return null;
+
+            var stringBuilder = new StringBuilder("");
+
+            for (int i = 0; i < body.Count; ++i)
+            {
+                stringBuilder.Append(i + ": ");
+                stringBuilder.AppendJoin(' ', body[i]);
+                if (i < body.Count - 1)
+                    stringBuilder.Append("\n");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

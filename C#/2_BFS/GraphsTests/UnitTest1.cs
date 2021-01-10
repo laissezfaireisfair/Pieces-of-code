@@ -137,5 +137,25 @@ namespace GraphsTests
 
             Assert.IsTrue(AreNeighboursEqual(expectedNeighbours, neighbours));
         }
+
+        [TestMethod]
+        public void StringTest()
+        {
+            var graph = new Graphs.Graph(5);
+            graph.AddEdge(0, 1);
+            graph.AddEdge(1, 2);
+            graph.AddEdge(2, 3);
+            graph.AddEdge(3, 4);
+            graph.AddEdge(4, 0);
+            string expected = "0: 1\n" +
+                "1: 2\n" +
+                "2: 3\n" +
+                "3: 4\n" +
+                "4: 0";
+
+            string actual = graph.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
