@@ -42,7 +42,7 @@ namespace BfsInGraph
         /// <summary>
         /// Reads size, amount of edges and edges list
         /// </summary>
-        Graphs.Graph AskGraphFromConsole()
+        static Graph AskGraphFromConsole()
         {
             Console.WriteLine("Type graph size (amount of vertexes):");
             int graphSize = int.Parse(Console.ReadLine());
@@ -64,7 +64,23 @@ namespace BfsInGraph
 
         static void Main(string[] args)
         {
-            
+            try
+            {
+                Graph graph = AskGraphFromConsole();
+                Console.WriteLine(graph);
+                Console.WriteLine("Type start and end vertexes to search way length:");
+                string[] wayInput = Console.ReadLine().Split(' ');
+                if (wayInput.Length < 2)
+                    throw new Exception("Bad input");
+                int start = int.Parse(wayInput[0]);
+                int finish = int.Parse(wayInput[1]);
+                int distance = graph.GetShortestWayLength(start, finish);
+                Console.WriteLine($"Distance between {start} and {finish} is {distance}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
