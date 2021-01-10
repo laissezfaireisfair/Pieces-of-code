@@ -21,7 +21,7 @@ namespace Graphs
 
             body = new List<LinkedList<int>>(size);
             for (int i = 0; i < size; ++i)
-                body[i] = new LinkedList<int>();
+                body.Add(new LinkedList<int>());
         }
 
         public int VertexNumber {
