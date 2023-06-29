@@ -1,3 +1,5 @@
+'use strict';
+
 const DUE_DATE = '28.03.2013'
 
 let message = 'hello';  // Old code uses 'var' instead, but it does not follow visibility
@@ -44,4 +46,14 @@ let comparison = 'abc' < 'ca'  // Lexicographical by unicode
 
 let strictComparison = 0 === false;  // Comparison without cast - false
 
-let nullSafe = null ?? 'abc'
+let nullSafe = null ?? 'abc';
+
+function showMessage(text = 'message') {
+    alert(text);
+}
+
+let showFunc = function(text) {
+    alert(text);
+};
+
+let sum = (a,b) => a + b;
