@@ -47,8 +47,7 @@ range[Symbol.iterator] = function () {
         current: this.from,
         last: this.to,
         next() {
-            if (this.current <= this.last)
-            {
+            if (this.current <= this.last) {
                 return {done: false, value: this.current++}
             }
             return {done: true}
@@ -56,8 +55,64 @@ range[Symbol.iterator] = function () {
     }
 }
 
-for (let num of range)
-{
+for (let num of range) {
     console.log(num)
 }
 /// /Creating custom iterator
+
+// Array destructuring
+let nameSurname = ['Andrey', 'Ivanovich', 'Golubev', 'some', 'extra', 'data']
+let [name = 'Jonn', /* ignored entry */, surname = 'Doe', ...rest] = nameSurname
+console.log(`${name} ${surname}: ${rest.toString()}`)
+// /Array destructuring
+
+// Object destructuring
+let options = {
+    title: 'Menu',
+    width: 1920,
+    height: 1080
+}
+let {width, height: myHeightVarName, title = 'default title'} = options
+console.log(width)
+console.log(myHeightVarName)
+console.log(title)
+
+// Nested destructuring
+let complex = {
+    size: {
+        width: 1920,
+        height: 1080
+    },
+    items: ['File', 'Edit'],
+    isMaximised: true
+}
+let {
+    size: {
+        width: complexWidth,
+        height: complexHeight
+    },
+    items: [complexItem1, complexItem2],
+    isMaximised: isComplexMaximised = false
+} = complex
+console.log(`${complexWidth}x${complexHeight}: ${complexItem1}, ${complexItem2}; maximised: ${isComplexMaximised}`)
+// /Nested destructuring
+
+let args = {
+    title: 'Menu',
+    items: ['File', 'Edit', 'View']
+};
+
+function showMenu({
+    title = "Untitled",
+    width: w = 100,
+    height: h = 200,
+    items: [item1, item2, item3]
+                  }) {
+    console.log(`${title} ${w} ${h}`)
+    console.log(item1)
+    console.log(item2)
+    console.log(item3)
+}
+
+showMenu(args)
+// /Object destructuring
