@@ -7,6 +7,12 @@ import java.util.ArrayList;
 public class DetailedGameState extends ProcessGameState {
     private int round;
 
+    public DetailedGameState(Game game) {
+        super(game);
+        currentCompetitors = new ArrayList<>(game.getPlayers());
+        round = 0;
+    }
+
     private void PrintCompetitionStepInfo() {
         var player = currentCompetitors.get(currentPlayerIndex);
         var rival = currentCompetitors.get(currentRivalIndex);
@@ -20,12 +26,6 @@ public class DetailedGameState extends ProcessGameState {
         var rivalLastDecision = rival.getLastDecision(player.getId()).toString();
         int rivalDelta = rival.getLastDelta(player.getId());
         System.out.printf(" %s: %sm Delta: %d (Score = %d)\n", rival.getName(), rivalLastDecision, rivalDelta, rival.getScore());
-    }
-
-    public DetailedGameState(Game game) {
-        super(game);
-        currentCompetitors = new ArrayList<>(game.getPlayers());
-        round = 0;
     }
 
     @Override

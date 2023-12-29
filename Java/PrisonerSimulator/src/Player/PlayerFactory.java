@@ -9,8 +9,7 @@ import java.util.Objects;
 public class PlayerFactory {
     private int idCounter = 0;
 
-    private IStrategy createStrategyByName(String name)
-    {
+    private IStrategy createStrategyByName(String name) {
         if (Objects.equals(name, "KindRepeaterStrategy")) {
             return new KindRepeaterStrategy();
         }

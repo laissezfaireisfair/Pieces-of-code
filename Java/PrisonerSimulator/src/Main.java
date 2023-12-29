@@ -32,7 +32,7 @@ public class Main {
             game.run();
         } catch (Exception exception) {
             System.out.printf("Exception. End of simulation.\nDetails: %s %s\n", exception, exception.getMessage());
-            for (var traceEntry: exception.getStackTrace())
+            for (var traceEntry : exception.getStackTrace())
                 System.out.println(traceEntry);
         }
     }
