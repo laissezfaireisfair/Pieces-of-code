@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
-    static final int MIN_ARGUMENTS = 4;
+    static final int MIN_ARGUMENTS = 3;
 
     public static void main(String[] args) {
         if (args.length < MIN_ARGUMENTS) {
@@ -31,7 +31,9 @@ public class Main {
         try {
             game.run();
         } catch (Exception exception) {
-            System.out.printf("Exception. End of simulation. Details: %s", exception.getMessage());
+            System.out.printf("Exception. End of simulation.\nDetails: %s %s\n", exception, exception.getMessage());
+            for (var traceEntry: exception.getStackTrace())
+                System.out.println(traceEntry);
         }
     }
 

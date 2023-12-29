@@ -1,17 +1,25 @@
 package Game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Configurator {
     //region PrivatePart
     private static Configurator instance = null;
+
     private int roundsCount = 5;
+
     private int cooperationReward = 5;
+
     private int cooperationFine = 10;
+
     private int defectReward = 10;
+
     private int defectFine = 7;
-    private List<String> strategyNames = List.of("KindRepeaterStrategy", "KindRepeaterStrategy", "KindRepeaterStrategy");
-    private String modeName = "detailed";
+
+    private List<String> strategyNames = new ArrayList<>(List.of("KindRepeaterStrategy", "KindRepeaterStrategy", "KindRepeaterStrategy"));
+    private String modeName = "fast";
+
     //endregion
 
     public static Configurator Instance() {

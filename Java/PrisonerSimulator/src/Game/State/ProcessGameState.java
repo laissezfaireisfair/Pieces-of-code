@@ -34,7 +34,7 @@ public abstract class ProcessGameState implements IGameState {
         var rivalId = rival.getId();
 
         var playerDecision = player.makeDecision(rivalId);
-        var rivalDecision = rival.makeDecision(rivalId);
+        var rivalDecision = rival.makeDecision(playerId);
 
         player.storeDecision(rivalId, rivalDecision);
         rival.storeDecision(playerId, playerDecision);
