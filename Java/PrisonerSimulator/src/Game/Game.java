@@ -1,6 +1,7 @@
 package Game;
 
 import Game.State.IGameState;
+import Game.State.InitializationGameState;
 import Player.IPlayerPlayFacade;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Game {
         gameState = new InitializationGameState(this);
     }
 
-    void switchGameState(IGameState gameState) {
+    public void switchGameState(IGameState gameState) {
         this.gameState = gameState;
     }
 

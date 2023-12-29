@@ -3,19 +3,19 @@ package Player;
 import Game.Decision;
 
 public interface IPlayerPlayFacade {
-    Decision MakeDecision(int rivalId);
+    Decision makeDecision(int rivalId);
 
-    void StoreDecision(int rivalId, Decision decision);
+    void storeDecision(int rivalId, Decision decision);
 
-    void UpdateScore(int delta, int rivalId);
+    void updateScore(int delta, int rivalId);
 
-    int GetId();
+    int getId();
 
-    String GetName();
+    String getName();
 
-    Decision GetLastDecision(int rivalId);
+    Decision getLastDecision(int rivalId);
 
-    int GetScore();
+    int getScore();
 
-    int GetLastDelta(int rivalId);
+    int getLastDelta(int rivalId);
 }
