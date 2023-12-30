@@ -14,10 +14,11 @@ fun main(args: Array<String>) {
     Configurator.strategyNames = getNamesFromArguments(args)
     getModeFromArguments(args)?.let { Configurator.modeName = it }
     getStepsFromArguments(args)?.let { Configurator.roundsCount = it.toInt() }
-    getMatrixPathFromArguments(args)?.let(::readMatrix)
+    getMatrixPathFromArguments(args)?.let { readMatrix(it) }
+
+    val game = Game()
 
     try {
-        val game = Game()
         game.run()
     } catch (exception: Exception) {
         println("Exception. End of simulation.\n$exception")
@@ -39,8 +40,7 @@ fun getMatrixPathFromArguments(args: Array<String>) =
     args.firstOrNull { it.startsWith("--matrix=") }
         ?.substring(8)
 
-fun readMatrix(path: String)
-{
+fun readMatrix(path: String) =
     with(Scanner(File(path))) {
         nextInt().let { Configurator.cooperationReward = it }
         nextInt().let { Configurator.cooperationFine = it }
@@ -49,4 +49,3 @@ fun readMatrix(path: String)
 
         close()
     }
-}
