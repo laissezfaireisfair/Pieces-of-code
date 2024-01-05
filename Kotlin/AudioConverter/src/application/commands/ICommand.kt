@@ -1,5 +1,9 @@
 package application.commands
 
-interface ICommand {
+import application.Audio
 
+interface ICommand {
+    val description: String
+
+    fun run(audioToModify: Audio)
 }
